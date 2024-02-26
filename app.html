@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrizoAlert - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="haut_page.png" alt="Header Image">
+    </header>
+    <div id="welcome" class="container">
+        <h1>Bienvenue sur OrizoAlert</h1>
+        <p>OrizoAlert est une application pour signaler des événements liés aux lignes de bus Orizo.</p>
+        <p>Utilisez le formulaire ci-dessous pour signaler un événement sur une ligne de bus.</p>
+        <button onclick="showEventForm()">Commencer</button>
+    </div>
+
+    <div id="event-form-container" class="container" style="display: none;">
+        <h1>Signaler un événement</h1>
+        <form id="event-form">
+            <label for="event">Sélectionner un événement :</label>
+            <select id="event" name="event" onchange="checkOther()">
+                <option value="accident">Accident</option>
+                <option value="panne">Panne</option>
+                <option value="retard">Retard</option>
+                <option value="autre">Autre</option>
+            </select>
+            <br>
+            <div id="other-event-container" style="display: none;">
+                <label for="other-event">Précisez :</label>
+                <input type="text" id="other-event" name="other-event">
+            </div>
+            <br>
+            <label for="ligne-bus">Ligne de bus :</label>
+            <input type="text" id="bus-line" name="ligne-bus">
+            <br>
+            <label for="arret-bus">Arrêt de bus :</label>
+            <input type="text" id="bus-stop" name="arret-bus">
+            <br>
+            <button type="submit">Signaler</button>
+        </form>
+        <div id="events-list"></div>
+    </div>
+
+    <script>
+        function showEventForm() {
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('event-form-container').style.display = 'block';
+        }
+
+        function checkOther() {
+            var eventSelect = document.getElementById('event');
+            var otherEventContainer = document.getElementById('other-event-container');
+            if (eventSelect.value === 'autre') {
+                otherEventContainer.style.display = 'block';
+            } else {
+                otherEventContainer.style.display = 'none';
+            }
+        }
+
+        document.getElementById('event-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/add_event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            }).then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetch('/get_events')
+                .then(response => response.json())
+                .then(events => {
+                    var eventsList = document.getElementById('events-list');
+                    eventsList.innerHTML = '<h2>Events</h2>';
+                    events.forEach(event => {
+                        var eventItem = document.createElement('div');
+                        eventItem.textContent = event.event;
+                        eventsList.appendChild(eventItem);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
