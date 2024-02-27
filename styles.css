@@ -2,16 +2,16 @@ header {
     background-image: url('header-image.jpg');
     background-size: cover;
     background-position: center;
-    height: 200px; /* Ajustez la hauteur selon vos besoins */
+    height: 200px; 
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Assurez-vous que l'en-tête est au-dessus du reste du contenu */
+    z-index: 1000; 
 }
 
 .container {
-    margin-top: 200px; /* Ajustez la marge supérieure du contenu pour éviter qu'il ne soit masqué par l'en-tête */
+    margin-top: 200px; 
 }
 
 body {
