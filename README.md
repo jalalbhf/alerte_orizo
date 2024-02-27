@@ -12,6 +12,8 @@ Gestion des Abonnements: Les utilisateurs peuvent s'abonner aux lignes de bus sp
 Notifications Personnalisées: Les utilisateurs peuvent personnaliser leurs préférences de notification en choisissant les heures auxquelles ils souhaitent recevoir des alertes, ainsi que les types d'incidents qu'ils souhaitent être informés.
 Cartographie des Arrêts: Une carte interactive affiche les arrêts de bus et permet aux utilisateurs de visualiser les incidents en cours sur différentes lignes.
 Historique des Incidents: Les utilisateurs peuvent consulter l'historique des incidents passés pour mieux planifier leurs déplacements à l'avenir.
+
+
 Technologies Utilisées
 
 Développement Mobile: L'application est développée pour les plateformes iOS et Android en utilisant des technologies telles que React Native pour assurer une expérience utilisateur fluide et cohérente sur différentes plateformes.
@@ -19,8 +21,5 @@ Intégration de Données en Temps Réel: Nous utilisons des API fournies par ORI
 Stockage des Données: Les informations sur les abonnements des utilisateurs et les incidents sont stockées de manière sécurisée dans une base de données cloud pour garantir la fiabilité et la disponibilité des données.
 Comment Contribuer
 
-Nous accueillons favorablement toute contribution à notre projet ! Si vous êtes développeur, vous pouvez contribuer au code source de l'application sur notre dépôt GitHub. Si vous avez des idées d'amélioration ou des retours d'expérience, n'hésitez pas à nous contacter via notre adresse e-mail dédiée.
+Nous accueillons favorablement toute contribution à notre projet ! Si vous êtes développeur, vous pouvez contribuer au code source de l'application sur notre dépôt GitHub. Si vous avez des idées d'amélioration ou des retours d'expérience, n'hésitez pas à nous contacter via notre adresse e-mail dédiée mamoja84@gmail.com
 
-Licence
-
-Ce projet est distribué sous la licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer selon les termes de cette licence.
