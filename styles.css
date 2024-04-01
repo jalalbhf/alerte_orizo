@@ -1,17 +1,9 @@
-header {
-    background-image: url('header-image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 200px; 
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000; 
-}
-
-.container {
-    margin-top: 200px; 
+:root {
+    --primary-color: #4CAF50; /* Votre vert Orizo */
+    --primary-color-hover: #45a049; /* Un vert légèrement plus foncé pour l'effet de survol */
+    --text-color: #333;
+    --background-color: #f2f2f2; /* Pour les en-têtes de tableau */
+    --border-color: #ddd; /* Pour les bordures de cellules du tableau */
 }
 
 body {
@@ -19,58 +11,91 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
-    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 200px; /* Décalage pour le header fixe */
 }
 
-.container {
-    text-align: center;
-    background-color: #fff;
+header {
+    background-image: url('header-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Styles principaux pour le layout */
+.main-container {
+    width: 90%; /* Ou la largeur que vous préférez */
+    max-width: 1200px; /* Une largeur maximale pour le contenu */
+    display: flex;
+    justify-content: space-between; /* Espace entre le formulaire et la liste d'événements */
+    align-items: flex-start; /* Assurez-vous que les items commencent en haut */
+    padding-top: 220px; /* Ajustez l'espace en haut pour le header fixe si nécessaire */
+    gap: 20px; /* Espace entre les éléments */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour ajouter du relief */
     padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Espace au bas du conteneur principal */
 }
 
-h1 {
-    color: #333;
+#event-form-container {
+    width: 50%; /* Ou une autre valeur pour ajuster la taille du formulaire */
 }
 
-p {
-    color: #666;
-    margin-bottom: 20px;
+#events-list {
+    width: 50%; /* Ou une autre valeur pour ajuster la taille de la liste */
+    margin-left: auto; /* Cela pousse le conteneur vers la droite */
 }
 
+/* Styles pour le tableau pour le rendre plus beau */
+table {
+    width: 100%; /* Utilisez toute la largeur disponible */
+    border-collapse: collapse;
+    margin-top: 20px; /* Ajoutez de l'espace au-dessus du tableau */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Une ombre subtile pour la profondeur */
+}
+
+th, td {
+    padding: 12px 15px; /* Plus d'espace intérieur */
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color); /* Utilisez la couleur principale pour l'en-tête */
+    color: white; /* Texte blanc pour l'en-tête */
+}
+
+td {
+    background-color: white; /* Fond blanc pour les cellules */
+}
+
+/* Ajouter des styles pour les boutons */
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border-radius: 4px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 button:hover {
-    background-color: #45a049;
+    opacity: 0.9; /* Un léger changement d'opacité pour l'interaction */
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+/* Styles pour le bouton de suppression pour qu'il corresponde au tableau */
+.delete-button {
+    background-color: #ff4d4d; /* Rouge pour la suppression */
+    color: white;
 }
 
-input[type="text"],
-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    width: 100%;
+.delete-button:hover {
+    background-color: #ff1a1a; /* Rouge plus foncé au survol */
 }
