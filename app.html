@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrizoAlert - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="haut_page.png" alt="Header Image">
+    </header>
+    <!-- Conteneur principal pour le formulaire et la liste des événements -->
+    <div class="main-container">
+        <!-- Conteneur du formulaire -->
+        <div id="event-form-container" class="container">
+            <h1>Signaler un événement</h1>
+            <form id="event-form">
+                <label for="event">Sélectionner un événement :</label>
+                <select id="event" name="event" onchange="checkOther()">
+                    <option value="accident">Accident</option>
+                    <option value="panne">Panne</option>
+                    <option value="retard">Retard</option>
+                    <option value="autre">Autre</option>
+                </select>
+                <br>
+                <div id="other-event-container" style="display: none;">
+                    <label for="other-event">Précisez :</label>
+                    <input type="text" id="other-event" name="other-event">
+                </div>
+                <br>
+                <label for="ligne-bus">Ligne de bus :</label>
+                <input type="text" id="bus-line" name="ligne-bus">
+                <br>
+                <label for="arret-bus">Arrêt de bus :</label>
+                <input type="text" id="bus-stop" name="arret-bus">
+                <br>
+                <button type="submit">Signaler</button>
+            </form>
+        </div>
+        <!-- Conteneur de la liste des événements -->
+        <div id="events-list" class="container">
+            <!-- La liste des événements sera générée ici par JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        function showEventForm() {
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('event-form-container').style.display = 'block';
+        }
+    
+        function checkOther() {
+            var eventSelect = document.getElementById('event');
+            var otherEventContainer = document.getElementById('other-event-container');
+            if (eventSelect.value === 'autre') {
+                otherEventContainer.style.display = 'block';
+            } else {
+                otherEventContainer.style.display = 'none';
+            }
+        }
+    
+        document.getElementById('event-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            var eventObject = Object.fromEntries(formData);
+    
+            // Générer un identifiant unique pour chaque événement
+            var eventId = 'event_' + new Date().getTime();
+            localStorage.setItem(eventId, JSON.stringify(eventObject));
+    
+            alert('Événement ajouté localement');
+            showEvents(); // Actualiser la liste des événements
+        });
+    
+        // La fonction showEvents telle que vous l'avez fournie
+        function showEvents() {
+            var eventsList = document.getElementById('events-list');
+            eventsList.innerHTML = ''; // Effacer la liste existante
+    
+            var table = document.createElement('table');
+            var headerRow = table.insertRow();
+            var headers = ["Événement", "Ligne", "Arrêt", "Signalé à", "Action"];
+            headers.forEach(headerText => {
+                var headerCell = document.createElement("th");
+                headerCell.textContent = headerText;
+                headerRow.appendChild(headerCell);
+            });
+    
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key.startsWith('event_')) {
+                    var eventData = JSON.parse(localStorage.getItem(key));
+                    var row = table.insertRow();
+    
+                    var cell = row.insertCell();
+                    cell.textContent = eventData.event;
+    
+                    cell = row.insertCell();
+                    cell.textContent = eventData['ligne-bus'];
+    
+                    cell = row.insertCell();
+                    cell.textContent = eventData['arret-bus'];
+    
+                    cell = row.insertCell();
+                    cell.textContent = new Date(parseInt(key.split('_')[1])).toLocaleString();
+    
+                    cell = row.insertCell();
+                    var deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Supprimer';
+                    deleteButton.onclick = function() {
+                        if (confirm("Êtes-vous sûr de vouloir supprimer cet événement ?")) {
+                            localStorage.removeItem(key);
+                            showEvents(); // Actualiser la liste des événements après la suppression
+                        }
+                    };
+                    cell.appendChild(deleteButton);
+                }
+            }
+    
+            eventsList.appendChild(table);
+        }
+    
+        document.addEventListener('DOMContentLoaded', showEvents);
+    </script>
+    
+
+</body>
+</html>
