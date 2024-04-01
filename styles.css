@@ -1,9 +1,10 @@
+/* Ce code en dessous va nous permettre de choisir differente couleurs au niveau des titres, des bordure et du fond. Donc maintenant a voir si ca vous va sinon on ce decide sur une couleur ??
 :root {
-    --primary-color: #4CAF50; /* Votre vert Orizo */
-    --primary-color-hover: #45a049; /* Un vert légèrement plus foncé pour l'effet de survol */
+    --primary-color: #4CAF50;
+    --primary-color-hover: #45a049; 
     --text-color: #333;
-    --background-color: #f2f2f2; /* Pour les en-têtes de tableau */
-    --border-color: #ddd; /* Pour les bordures de cellules du tableau */
+    --background-color: #f2f2f2; 
+    --border-color: #ddd; 
 }
 
 body {
