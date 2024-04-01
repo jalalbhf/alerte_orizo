@@ -31,20 +31,26 @@ header {
     z-index: 1000;
 }
 
-/* Styles principaux pour le layout */
+/*
+    ICI les gars c'est les styles principaux pour le layout
+
+    Ce fichier ducoup il contient les styles principaux pour le layout de ORIZO.
+    Il définit la largeur, l'espacement entre les éléments,
+    l'ombre pour ajouter du relief, la couleur de fond, et d'autres styles donc maintenant a voir si on laisse comme ca ou non.
+*/
 .main-container {
-    width: 90%; /* Ou la largeur que vous préférez */
-    max-width: 1200px; /* Une largeur maximale pour le contenu */
+    width: 90%; 
+    max-width: 1200px; 
     display: flex;
-    justify-content: space-between; /* Espace entre le formulaire et la liste d'événements */
-    align-items: flex-start; /* Assurez-vous que les items commencent en haut */
-    padding-top: 220px; /* Ajustez l'espace en haut pour le header fixe si nécessaire */
-    gap: 20px; /* Espace entre les éléments */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour ajouter du relief */
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding-top: 220px; 
+    gap: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    margin-bottom: 20px; /* Espace au bas du conteneur principal */
+    margin-bottom: 20px; 
 }
 
 #event-form-container {
