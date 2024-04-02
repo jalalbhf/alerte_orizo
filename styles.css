@@ -62,12 +62,18 @@ header {
     margin-left: auto; /* Cela pousse le conteneur vers la droite */
 }
 
-/* Styles pour le tableau pour le rendre plus beau */
+/*
+    Styles pour le tableau pour le rendre plus beau
+
+    Ce bloc de styles va permettre de définir les règles pour le tableau afin de l'embellir et d'améliorer
+    son apparence visuelle donc on le laisse pas le choix. Il utilise toute la largeur disponible, supprime les espaces
+    entre les bordures des cellules donc si on veut en laisser il y a plus qu'a modifier le code.
+*/
 table {
-    width: 100%; /* Utilisez toute la largeur disponible */
+    width: 100%; 
     border-collapse: collapse;
-    margin-top: 20px; /* Ajoutez de l'espace au-dessus du tableau */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Une ombre subtile pour la profondeur */
+    margin-top: 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 th, td {
