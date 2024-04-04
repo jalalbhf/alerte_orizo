@@ -125,6 +125,50 @@
         }
     
         document.addEventListener('DOMContentLoaded', showEvents);
+
+         const lignesBus = {
+  "T1": "Ligne T1",
+  "C2": "Ligne C2",
+  "C3": "Ligne C3",
+  "4": "Ligne 4",
+  "5": "Ligne 5",
+  "6": "Ligne 6",
+  "7": "Ligne 7",
+  "8": "Ligne 8",
+  "9": "Ligne 9",
+  "10": "Ligne 10",
+  "11": "Ligne 11",
+  "12": "Ligne 12",
+  "13": "Ligne 13",
+  "14": "Ligne 14",
+  "15": "Ligne 15",
+  "16": "Ligne 16",
+  "17": "Ligne 17",
+  "18": "Ligne 18",
+  "19": "Ligne 19",
+  "20": "Ligne 20",
+  "22": "Ligne 22",
+  "23": "Ligne 23",
+  "24": "Ligne 24",
+  "25": "Ligne 25"
+   
+    
+  };
+  
+  function remplirLignesBus() {
+    const selectLigneBus = document.getElementById('ligne-bus');
+    for (const key in lignesBus) {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = lignesBus[key];
+      selectLigneBus.appendChild(option);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    remplirLignesBus();
+    showEvents();
+  });
 </script>
 
   
