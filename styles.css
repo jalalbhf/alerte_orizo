@@ -1,16 +1,17 @@
-/* Ce code en dessous va nous permettre de choisir differente couleurs au niveau des titres, des bordure et du fond. 
-Donc maintenant a voir si ca vous va sinon on ce decide sur une couleur ??*/
 :root {
-    --primary-color: #4CAF50;
-    --primary-color-hover: #45a049; 
+    --primary-color: #4CAF50; /* Votre vert Orizo */
+    --primary-color-hover: #45a049; /* Un vert légèrement plus foncé pour l'effet de survol */
     --text-color: #333;
-    --background-color: #f2f2f2; 
-    --border-color: #ddd; 
+    --background-color: #f2f2f2; /* Pour les en-têtes de tableau */
+    --border-color: #ddd; /* Pour les bordures de cellules du tableau */
+    --button-delete-color: #ff4d4d; /* Rouge pour la suppression */
+    --button-delete-hover-color: #ff1a1a; /* Rouge plus foncé au survol */
+    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne */
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: var(--font);
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,93 +24,116 @@ header {
     background-image: url('header-image.jpg');
     background-size: cover;
     background-position: center;
-    height: 200px;
+    height: 150px; /* Hauteur réduite pour un aspect plus moderne */
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour du relief */
 }
 
-/*
-    ICI les gars c'est les styles principaux pour le layout
-
-    Ce fichier ducoup il contient les styles principaux pour le layout de ORIZO.
-    Il définit la largeur, l'espacement entre les éléments,
-    l'ombre pour ajouter du relief, la couleur de fond, et d'autres styles donc maintenant a voir si on laisse comme ca ou non.
-*/
-.main-container {
-    width: 90%; 
-    max-width: 1200px; 
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start; 
-    padding-top: 220px; 
-    gap: 20px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-bottom: 20px; 
+/* Ajout de transitions pour les interactions utilisateurs */
+a, button {
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-#event-form-container {
-    width: 50%; /* Ou une autre valeur pour ajuster la taille du formulaire */
-}
-
-#events-list {
-    width: 50%; /* Ou une autre valeur pour ajuster la taille de la liste */
-    margin-left: auto; /* Cela pousse le conteneur vers la droite */
-}
-
-/*
-    Styles pour le tableau pour le rendre plus beau
-
-    Ce bloc de styles va permettre de définir les règles pour le tableau afin de l'embellir et d'améliorer
-    son apparence visuelle donc on le laisse pas le choix. Il utilise toute la largeur disponible, supprime les espaces
-    entre les bordures des cellules donc si on veut en laisser il y a plus qu'a modifier le code.
-*/
-table {
-    width: 100%; 
-    border-collapse: collapse;
-    margin-top: 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-th, td {
-    padding: 12px 15px; /* Plus d'espace intérieur */
-    border: 1px solid var(--border-color);
-    text-align: left;
-}
-
-th {
-    background-color: var(--primary-color); /* Utilisez la couleur principale pour l'en-tête */
-    color: white; /* Texte blanc pour l'en-tête */
-}
-
-td {
-    background-color: white; /* Fond blanc pour les cellules */
-}
-
-/* Ajouter des styles pour les boutons */
-button {
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    opacity: 0.9; /* Un léger changement d'opacité pour l'interaction */
-}
-
-/* Styles pour le bouton de suppression pour qu'il corresponde au tableau */
-.delete-button {
-    background-color: #ff4d4d; /* Rouge pour la suppression */
+button:hover,
+button:focus, /* Ajout de styles pour l'état focus */
+a:hover,
+a:focus {
+    background-color: var(--primary-color-hover);
     color: white;
+    transform: translateY(-2px); /* Légère élévation au survol */
+    outline: none; /* Suppression du contour par défaut lors du focus */
+}
+
+/* Améliorations visuelles pour les formulaires */
+input[type=text],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Pour que padding ne change pas la largeur */
+}
+
+input[type=text]:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Halo vert autour de l'input focus */
+}
+
+/* Styles pour les conteneurs et les tableaux */
+.main-container {
+    /* autres styles existants */
+    gap: 30px; /* Espace augmenté entre les éléments pour un look plus aéré */
+}
+
+#event-form-container, #events-list {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px; /* Bords arrondis pour les conteneurs */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Ombre pour la profondeur */
+}
+
+/* Amélioration du bouton supprimer */
+.delete-button {
+    background-color: var(--button-delete-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition: background-color 0.2s ease;
+    border-radius: 4px; /* Bords arrondis pour les boutons */
 }
 
 .delete-button:hover {
-    background-color: #ff1a1a; /* Rouge plus foncé au survol */
+    background-color: var(--button-delete-hover-color);
+}
+
+/* Amélioration de la responsive design */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding-top: 150px; /* Ajustement pour mobile */
+    }
+
+    #event-form-container,
+    #events-list {
+        width: 100%; /* Pleine largeur sur mobile */
+    }
+}
+
+/* Modernisation du tableau */
+table {
+    /* autres styles existants */
+    border-radius: 8px; /* Bords arrondis pour le tableau */
+    overflow: hidden; /* Cache les bordures internes au niveau des coins arrondis */
+}
+
+th {
+    /* autres styles existants */
+    letter-spacing: 0.5px; /* Espacement des lettres pour un aspect plus net */
+}
+
+td {
+    /* autres styles existants */
+    color: var(--text-color); /* Couleur de texte plus douce */
+}
+
+/* Améliorations des transitions pour les boutons */
+button {
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
