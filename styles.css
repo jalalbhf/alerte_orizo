@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #4CAF50; /* Votre vert Orizo */
-    --primary-color-hover: #45a049; /* Un vert légèrement plus foncé pour l'effet de survol */
+    --primary-color: #4CAF50; 
+    --primary-color-hover: #45a049; 
     --text-color: #333;
-    --background-color: #f2f2f2; /* Pour les en-têtes de tableau */
-    --border-color: #ddd; /* Pour les bordures de cellules du tableau */
-    --button-delete-color: #ff4d4d; /* Rouge pour la suppression */
-    --button-delete-hover-color: #ff1a1a; /* Rouge plus foncé au survol */
-    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne */
+    --background-color: #f2f2f2; 
+    --border-color: #ddd; 
+    --button-delete-color: #ff4d4d; 
+    --button-delete-hover-color: #ff1a1a; 
+    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Choix d'une police différente de celle d'origine */
 }
+/* Ci-dessus on a initialisé les couleurs en lien avec orizo ainsi que les couleurs qui nous servirons pour le reste du html */
 
 body {
     font-family: var(--font);
@@ -102,14 +103,15 @@ select:focus {
 @media screen and (max-width: 768px) {
     .main-container {
         flex-direction: column;
-        padding-top: 150px; /* Ajustement pour mobile */
+        padding-top: 150px; 
     }
 
     #event-form-container,
     #events-list {
-        width: 100%; /* Pleine largeur sur mobile */
+        width: 100%; 
     }
 }
+/* Ici on a essaye d'adapter au mieux pour une version mobile (ce qui reste en phase de test encore)*/
 
 /* Modernisation du tableau */
 table {
